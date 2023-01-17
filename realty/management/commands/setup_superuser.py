@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = "Setup SuperUser"
 
     def handle(self, *args, **options):
-        user, _ = User.objects.get_or_create(username='admin', email='admin@mail.com')
+        user, _ = User.objects.get_or_create(phone_number='+996700123456')
         user.set_password('admin')
         user.is_superuser = True
         user.is_staff = True
