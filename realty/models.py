@@ -17,6 +17,8 @@ class ObjectCategory(models.Model):
     class Meta:
         verbose_name = _('Категория объектов')
         verbose_name_plural = _('Категории объектов')
+    def __str__(self):
+        return self.name
 
 
 class Objects(models.Model):

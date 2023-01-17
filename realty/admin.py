@@ -3,8 +3,11 @@ from realty.models import ObjectCategory, Objects, Images
 from django.utils.translation import gettext_lazy as _
 
 # Register your models here.
+class ImagesInline(admin.TabularInline):
+    model = Images
 class ObjectsAdmin(admin.ModelAdmin):
     ordering = ('-updated_at',)
+    inlines = [ImagesInline]
     list_display = ('category', 'manager', 'title')
     list_filter = ['category', 'manager']
     search_fields = ('title','residence','construction_company')
