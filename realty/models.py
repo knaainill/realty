@@ -46,7 +46,7 @@ class Objects(models.Model):
         null=True,
         blank=True,
     )
-    constructioт_company = models.CharField(
+    construction_company = models.CharField(
         verbose_name=_('Строительная компания'),
         max_length=256,
         null=True,
@@ -88,6 +88,12 @@ class Objects(models.Model):
         null=True,
         blank=True,
     )
+    category = models.ForeignKey(
+        'realty.ObjectCategory',
+        verbose_name=_('Категория'),
+        on_delete=models.CASCADE,
+        related_name='category',
+    )
     land_area = models.FloatField(
         verbose_name=_('Площадь участка'),
         null=True,
@@ -128,6 +134,8 @@ class Objects(models.Model):
         null=True,
         blank=True,
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     class Meta:
         verbose_name = _('Объект')
         verbose_name_plural = _('Объекты')
